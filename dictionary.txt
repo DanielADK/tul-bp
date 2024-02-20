@@ -1,0 +1,21 @@
+personal_ws-1.1 cs 20 
+Applied
+CB
+Informatics
+Information
+and
+author
+bib
+czech
+family
+finalnamedelim
+given
+heading
+images
+labelnumberwidth
+multinamedelim
+none
+refs
+same
+template
+tex

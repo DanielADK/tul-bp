@@ -1,0 +1,85 @@
+\chapter{Integrace spisové služby}
+V původní analýze informačního systému\cite{analyza-PMSIS} školy byla spisová služba uvedena pouze okrajově a byl popsán pouze účel, avšak bez hlubšího zamyšlení nad její prioritou a bez podrobného rozboru toho, co integrace spisové služby plně zahrnuje. Tento přístup odrážel původní předpoklad, že zatížení spojené s implementací tohoto komplexního systému by pro školu nepředstagovalo největší prioritu.
+
+Avšak s přibývajícími zkušenostmi a dalším zkoumáním administrativních procesů ve škole došlo k přehodnocení této situace. Bylo zjištěno, že administrativní zátěž na zaměstnance, včetně třídních učitelů, je výrazně vyšší, než se původně předpoklávalo. Toto je způsobeno rozsáhlými byrokratickými požadavky na zpracování a správu dokumentů, které by mohla integrace spisové služby výrazně zjednodušit prostřednictvím automatizace generování dokumentů.
+
+Pro přiblížení je zde příklad procesu vyřízení pochvaly třídního učitele nezletilého žáka.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth/2]{ac-priklad-pochvala-tridniho-ucitele.png}
+    \caption{Příklad procesu vydání pochvaly třidního učitele}
+    \label{fig:priklad-pochvala-tridniho-ucitele}
+\end{figure}
+
+Tento příklad je jeden z celé škály. Zde uváním všechny dokumenty z kategorie výchovných opatřední, které musí spravovat řadový třídní učitel:
+\begin{itemize}
+    \item zkouška pro doplnění klasifikace - oznámení;
+    \item pochvala třídního učitele;
+    \item důtka třídního učitele;
+    \item napomenutí třídního učitele;
+    \item upozornění na velkou absenci a na možnost vyžadování omlouvání absence pouze 
+    lékařem nebo jiným úředním způsobem;
+    \item omlouvání avsence pouze lékařem nebo jiným úředním způsobem;
+    \item upozornění na zaostávání;
+    \item upozornění na neúčast na cvičeních a neodevzdávání zpráv ze cvičení;
+\end{itemize}
+
+Některé z těchto dokumentů mají další specifické podverze. Další typy a kategorie dokumentů jsou pro například pro ředitele školy. V uvedené kategorii celou manipulaci vyřizuje jeho zástupce pro třídu - tedy třídní učitel.
+
+V současné době se jednací čísla generují manuálně prostřednictvím administrativního pracovníka, což je proces, který je časově i personálně náročný a náchylný k lidským chybám. Tento tradiční přístup zahrnuje několik kroků, od žádosti o číslo, přes jeho zápis do fyzických nebo digitálních dokumentů, až po archivaci. Výsledkem je, že celý proces vyřízení jednoduchých úkonů, jako je vydání pochvaly třídního učitele, trvá déle, než je žádoucí, a to hlavně kvůli administrativní zátěži, která s tím souvisí.
+
+Existuje možnost plné integrace spisové služby do ŠIS, což by výrazně zjednodušilo a urychlilo proces generování jednacích čísel a správu dokumentů. Pro úspěšnou integraci je však nezbytné, aby systém splňoval požadavky Národního standardu pro elektronické systémy spisové služby (NSESSS)\cite{nsesss}, což je klíčový dokument, který stanovuje pravidla pro správu, ukládání, archivaci a ochranu elektronických dokumentů ve veřejné správě.
+
+NSESSS je komplexní sada specifikací, která má za cíl zvýšit efektivitu a bezpečnost v elektronickém zpracování dokumentů. Standard pokrývá širokou škálu témat, od formátů dokumentů, přes jejich klasifikaci, až po procesy schvalování a ukládání. Díky tomu může spisová služba, která je s NSESSS kompatibilní, značně zjednodušit běznou administrativu a zároveň zajistit vysokou úroveň ochrany a dostupnosti dat.
+
+V kontextu implementace způsobů získávání spisových čísel se nabízí dvě základní cesty, jak dosáhnout větší efektivity a zjednodušení. Tyto cesty reflektují rozdílné přístupy k řešení výzvy spojené s integrací a získáváním spisových čísel, přičemž každá z nich má své specifické výhody i omezení.
+
+\section{Implementace NSESSS}
+První možností je implementace NSESSS, což je komplexní a normativně náročný proces, který by umožnil plně automatizované získávání spisových čísel ze spisové služby. Tento přístup vyžaduje hluboké porozumění a studium XML struktur, které jsou základem pro správnou implementaci spisové služby v souladu s NSESSS. Avšak právě rozsáhlé požadavky na technické a legislativní znalosti činí tento přístup časově a kapacitně náročným. Ve světle omezených financí a potřeby zavedení systému, který bude efektivní z hlediska ceny a výkonu, se tento způsob jeví jako méně vhodný.
+
+Příklad fungování systému s implementací NSESSS
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth-60pt]{ac-nsesss-pochvala.png}
+    \caption{Příklad procesu vydání pochvaly třidního učitele pomocí NSESSS. Modře jsou vyznačeny aktivity zpracovávané člověkem a zeleně softwarovou část.}
+    \label{fig:ac-nsesss-pochvala}
+\end{figure}
+
+\section{Implementace vícestupňového formuláře}
+Druhou cestou je vytvoření vícestupňového formuláře, který představuje více praktické a flexibilní řešení. Tento systém je navržen tak, aby automaticky notifikoval příslušného zaměstnance v kanceláři a poskytl mu přehledné informace potřebné pro rychlé zpracování žádosti o spisové číslo. Tento přístup minimalizuje potřebu rozsáhlého studia NSESSS pro programátora a současně zlepšuje efektivitu zpracování vydávání dokumentů.
+
+Dle kontaktu s ředitelem školy jsem provedl analýzu uživatelských požadavků a na jeho základě jsem identifikoval dvě možná řešení pro implementaci tohoto vícestupňového formuláře, které jsou nyní předmětem zájmu. Tento proces je klíčový pro efektivní uživatelsky-centristický nárh systému (UCD).
+
+\subsection{Dvoufázový formulář}
+Dvoufázový formulář je základním řešením pro automatizaci procesu žádosti o spisové číslo. Jeho hlavní předností je jednoduchost a přímá aplikace.
+\begin{enumerate}
+    \item V první fázi je žádost o vydání dokumentu žadatelem, pro který bude získáváno spisové číslo, prostřednictvím elektronického formuláře, který žadatel vyplní dle specifických požadavků pro daný dokument. Po odeslání formuláře systém automaticky notifikuje zodpovědného zaměstnance v kanceláři, který přidělí spisové číslo.
+
+    \item Ve druhé fázi si zodpovědný zaměstnanec zobrazí data z odeslaného formuláře a zadá je do systému spisové služby. Ta přidělí dokumentu spisové číslo zaměstnanec manuálně zapíše jednací číslo do formuláře. Systém notifikuje žadatele o zpracování a může si hotový dokument zobrazit, vytisknout a dále s ním manipulovat dle potřeb.
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth/2]{ac-dvoufaz-pochvala.png}
+    \caption{Příklad procesu vydání pochvaly třidního učitele pomocí dvoufázového formuláře. Modře jsou vyznačeny aktivity zpracovávané člověkem a zeleně softwarovou část.}
+    \label{fig:ac-dvoufaz-pochvala}
+\end{figure}
+
+\subsection{Třífázový formulář}
+Třífázový formulář představuje inovativní rozšíření dvoufázového modelu tím, že přidává specifický prvek interakce do stávajícího procesu - hlasování o některých druzích důtek a pochval a dalších dokumentech pedagogickým sborem. Ředitel považuje za důležité hlasovat o ředitelských pochvalách, důtkách, povoleních opakovat ročník, podmínečných vyloučení a dalších výchovných opatřední celý sbor a svěřuje tímto tuto svou pravomoc přímo pedagogickým pracovníkům. Žáky bude moct třídní učitel nominovat na uvedené na pochvaly, důtky a další výchová opatřední schvalované ředitelem prostřednictvím IS.
+
+\begin{enumerate}
+    \item V tomto modelu první fáze zůstává identická s první fází dvoufázového formuláře, což znamená, že začíná standardním formulářem, který připraví žádost o spisové číslo.
+
+    \item Druhá fáze, která je jedinečná pro třífázový model, přináší nový rozměr – platformu pro hlasování. Tato platforma umožňuje zapisovateli porad urychleně zapsat počty hlasujících PRO, PROTI, ZDRŽEL SE do IS a ten rozhodne na základě převahy skupin PRO a PROTI o přechodu do třetí fáze, či skartace záznamu.
+
+    \item Třetí a závěrečná fáze opět navazuje na standardní proces dvoufázového formuláře, kde po hlasování následuje automatická notifikace zodpovědného zaměstnance a zaznamenání spisového čísla do systému.
+\end{enumerate}
+Tímto způsobem se elektronicky zaznamená hlasování o rozhodnutí, které se nyní dělá ručně v papírové formě a zároveň systém ihned  
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth-120pt]{ac-trojfaz-pochvala.png}
+    \caption{Příklad procesu vydání pochvaly třidního učitele pomocí třífázového formuláře. Modře jsou vyznačeny aktivity zpracovávané člověkem a zeleně softwarovou část.}
+    \label{fig:ac-trojfaz-pochvala}
+\end{figure}

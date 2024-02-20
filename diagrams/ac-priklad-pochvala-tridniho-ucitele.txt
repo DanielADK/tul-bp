@@ -1,0 +1,14 @@
+@startuml
+start
+
+:Stažení šablony dokumentu;
+:Kompletace požadovaných údajů do šablony;
+:Tisk dokumentu ve dvou exeplářích;
+:Žádosti o přidělení spisového čísla v kanceláři školy;
+:Zapsání přiděleného spisového čísla do tištěného dokumentu;
+:Předání dvou kopií žákovi pro získání podpisu zákonného zástupce;
+:Kontrola vrácení podepsané kopie;
+:Archivace kopie do osobní složky žáka;
+
+stop
+@enduml

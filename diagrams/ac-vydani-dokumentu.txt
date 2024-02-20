@@ -1,0 +1,16 @@
+@startuml
+start
+
+:Žádost o vydání dokumentu;
+
+if (Je potřeba probrat na pedagogické poradě?) then (ano)
+  :Třífázový proces;
+else (ne)
+  :Dvoufázový proces;
+endif
+
+:Přidělení spisového. čísla;
+:Vydání dokumentu;
+
+stop
+@enduml

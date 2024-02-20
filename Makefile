@@ -1,7 +1,7 @@
 FILE := main
 DIAGRAMS_DIR := ./diagrams
-IMG_DIR := ./img
-PLANTUML_JAR := plantuml.jar
+IMG_DIR := ./images
+PLANTUML_JAR := ./vendor/plantuml.jar
 SOURCES := $(wildcard $(DIAGRAMS_DIR)/*.txt)
 TARGETS := $(patsubst $(DIAGRAMS_DIR)/%.txt,$(IMG_DIR)/%.png,$(SOURCES))
 

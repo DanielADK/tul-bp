@@ -1,0 +1,30 @@
+@startuml
+skinparam ParticipantBackgroundColor #AAF
+skinparam ParticipantBorderColor #AAF
+skinparam ActorBackgroundColor #AAF
+skinparam ActorBorderColor #AAF
+skinparam ArrowColor #444
+!$HUMAN = "#ADD8E6"
+!$SOFTWARE = "#90EE90"
+
+start
+$HUMAN: Žádost o generování dokumentu formulářem v IS;
+partition "**Proces získání spisového čísla**" {
+  note
+  XML soubor musí
+  splňovat standard 
+  NSESSS
+  end note
+
+  $SOFTWARE: Vytvoření XML souboru pro spisovou\nslužbu a vyplnění potřebnými daty;
+  $SOFTWARE: Odeslání XML souboru\na server spisové služby;
+  $SOFTWARE: Čekání na přidělení spisového čísla\nod spisové služby;
+  $SOFTWARE: Začlenění spisového čísla\ndo dokumentu pochvaly;
+}
+$HUMAN: Tisk dokumentu pochvaly\ns přiděleným spisovým číslem;
+$HUMAN: Podpis třídním učitelem\nna tištěném dokumentu;
+$HUMAN: Odevzdání dokumentu žákovi\npro podpis zákonným zástupcem;
+$HUMAN: Vrácení podepsaného dokumentu\ndo školy pro archivaci;
+$HUMAN: Uložení dokumentu\ndo archivu školy;
+stop
+@enduml
