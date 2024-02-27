@@ -1,4 +1,5 @@
 \chapter{Integrace spisové služby}
+\label{chap:integrace-spis-sluzby}
 V původní analýze informačního systému\cite{analyza-PMSIS} školy byla spisová služba uvedena pouze okrajově a byl popsán pouze účel, avšak bez hlubšího zamyšlení nad její prioritou a bez podrobného rozboru toho, co integrace spisové služby plně zahrnuje. Tento přístup odrážel původní předpoklad, že zatížení spojené s implementací tohoto komplexního systému by pro školu nepředstagovalo největší prioritu.
 
 Avšak s přibývajícími zkušenostmi a dalším zkoumáním administrativních procesů ve škole došlo k přehodnocení této situace. Bylo zjištěno, že administrativní zátěž na zaměstnance, včetně třídních učitelů, je výrazně vyšší, než se původně předpoklávalo. Toto je způsobeno rozsáhlými byrokratickými požadavky na zpracování a správu dokumentů, které by mohla integrace spisové služby výrazně zjednodušit prostřednictvím automatizace generování dokumentů.
@@ -50,7 +51,7 @@ Druhou cestou je vytvoření vícestupňového formuláře, který představuje 
 
 Dle kontaktu s ředitelem školy jsem provedl analýzu uživatelských požadavků a na jeho základě jsem identifikoval dvě možná řešení pro implementaci tohoto vícestupňového formuláře, které jsou nyní předmětem zájmu. Tento proces je klíčový pro efektivní uživatelsky-centristický nárh systému (UCD).
 
-\subsection{Dvoufázový formulář}
+\subsection*{Dvoufázový formulář}
 Dvoufázový formulář je základním řešením pro automatizaci procesu žádosti o spisové číslo. Jeho hlavní předností je jednoduchost a přímá aplikace.
 \begin{enumerate}
     \item V první fázi je žádost o vydání dokumentu žadatelem, pro který bude získáváno spisové číslo, prostřednictvím elektronického formuláře, který žadatel vyplní dle specifických požadavků pro daný dokument. Po odeslání formuláře systém automaticky notifikuje zodpovědného zaměstnance v kanceláři, který přidělí spisové číslo.
@@ -65,7 +66,7 @@ Dvoufázový formulář je základním řešením pro automatizaci procesu žád
     \label{fig:ac-dvoufaz-pochvala}
 \end{figure}
 
-\subsection{Třífázový formulář}
+\subsection*{Třífázový formulář}
 Třífázový formulář představuje inovativní rozšíření dvoufázového modelu tím, že přidává specifický prvek interakce do stávajícího procesu - hlasování o některých druzích důtek a pochval a dalších dokumentech pedagogickým sborem. Ředitel považuje za důležité hlasovat o ředitelských pochvalách, důtkách, povoleních opakovat ročník, podmínečných vyloučení a dalších výchovných opatřední celý sbor a svěřuje tímto tuto svou pravomoc přímo pedagogickým pracovníkům. Žáky bude moct třídní učitel nominovat na uvedené na pochvaly, důtky a další výchová opatřední schvalované ředitelem prostřednictvím IS.
 
 \begin{enumerate}
@@ -83,3 +84,6 @@ Tímto způsobem se elektronicky zaznamená hlasování o rozhodnutí, které se
     \caption{Příklad procesu vydání pochvaly třidního učitele pomocí třífázového formuláře. Modře jsou vyznačeny aktivity zpracovávané člověkem a zeleně softwarovou část.}
     \label{fig:ac-trojfaz-pochvala}
 \end{figure}
+
+\section{Návrh řešení}
+Důležité

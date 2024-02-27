@@ -18,7 +18,7 @@ $(IMG_DIR)/%.png: $(DIAGRAMS_DIR)/%.txt
 clean: clean-tex clean-pdf clean-diagrams
 
 clean-tex:
-	rm -f *.out *.aux *.bbl *.blg *.log *toc *.ptb *.tod *.fls *.fdb_latexmk *.lof *.vrb *.nav *.snm *.bcf *.bak
+	rm -f ./**/*.out ./**/*.aux ./**/*.bbl ./**/*.blg ./**/*.log ./**/*toc ./**/*.ptb ./**/*.tod ./**/*.fls ./**/*.fdb_latexmk ./**/*.lof ./**/*.vrb ./**/*.nav ./**/*.snm ./**/*.bcf ./**/*.bak
 
 clean-pdf: 
 	rm -f *.pdf
@@ -31,8 +31,9 @@ spellcheck:
 
 compile:
 	xelatex $(FILE)
-	biber $(FILE)
+	bibtex $(FILE)
 	xelatex $(FILE)
 	xelatex $(FILE)
+	make clean-tex
 
 all: spellcheck compile
