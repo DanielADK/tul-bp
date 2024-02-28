@@ -8,7 +8,7 @@ skinparam ArrowColor #444
 !$SOFTWARE = "#90EE90"
 
 start
-$HUMAN: Žádost o generování dokumentu formulářem v IS;
+$HUMAN: C1: Žádost o generování dokumentu formulářem v IS;
 partition "**Proces získání spisového čísla**" {
   note
   XML soubor musí
@@ -16,15 +16,15 @@ partition "**Proces získání spisového čísla**" {
   NSESSS
   end note
 
-  $SOFTWARE: Vytvoření XML souboru pro spisovou\nslužbu a vyplnění potřebnými daty;
-  $SOFTWARE: Odeslání XML souboru\na server spisové služby;
-  $SOFTWARE: Čekání na přidělení spisového čísla\nod spisové služby;
-  $SOFTWARE: Začlenění spisového čísla\ndo dokumentu pochvaly;
+  $SOFTWARE: S1: Vytvoření XML souboru pro spisovou\nslužbu a vyplnění potřebnými daty;
+  $SOFTWARE: S2: Odeslání XML souboru\na server spisové služby;
+  $SOFTWARE: S3: Čekání na přidělení spisového čísla\nod spisové služby;
+  $SOFTWARE: S4: Začlenění spisového čísla\ndo dokumentu pochvaly;
 }
-$HUMAN: Tisk dokumentu pochvaly\ns přiděleným spisovým číslem;
-$HUMAN: Podpis třídním učitelem\nna tištěném dokumentu;
-$HUMAN: Odevzdání dokumentu žákovi\npro podpis zákonným zástupcem;
-$HUMAN: Vrácení podepsaného dokumentu\ndo školy pro archivaci;
-$HUMAN: Uložení dokumentu\ndo archivu školy;
+$HUMAN: C2: Tisk dokumentu pochvaly\ns přiděleným spisovým číslem;
+$HUMAN: C3: Podpis třídním učitelem\nna tištěném dokumentu;
+$HUMAN: C4: Odevzdání dokumentu žákovi\npro podpis zákonným zástupcem;
+$HUMAN: C5: Vrácení podepsaného dokumentu\ndo školy pro archivaci;
+$HUMAN: C6: Uložení dokumentu\ndo archivu školy;
 stop
 @enduml

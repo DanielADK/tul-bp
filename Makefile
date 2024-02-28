@@ -5,6 +5,11 @@ PLANTUML_JAR := ./vendor/plantuml.jar
 SOURCES := $(wildcard $(DIAGRAMS_DIR)/*.txt)
 TARGETS := $(patsubst $(DIAGRAMS_DIR)/%.txt,$(IMG_DIR)/%.png,$(SOURCES))
 
+all: 
+	$(MAKE) -j8 deps
+	$(MAKE) spellcheck 
+	$(MAKE) compile
+
 deps: $(TARGETS)
 	
 $(IMG_DIR)/%.png: $(DIAGRAMS_DIR)/%.txt
@@ -14,9 +19,12 @@ $(IMG_DIR)/%.png: $(DIAGRAMS_DIR)/%.txt
 clean: clean-tex clean-pdf clean-diagrams
 
 clean-tex:
-	rm -rf ./**/*.{out,aux,bbl}
+	rm -rf ./**/*.out
 	rm -rf ./**/*.aux
-	rm -rf ./**/*.bbl ./**/*.blg ./**/*.log ./**/*toc ./**/*.ptb ./**/*.tod ./**/*.fls ./**/*.fdb_latexmk ./**/*.lof ./**/*.vrb ./**/*.nav ./**/*.snm ./**/*.bcf ./**/*.bak
+	rm -rf ./**/*.bbl
+	rm -rf ./**/*.aux
+	rm -rf ./**/*.bbl 
+	rm -rf ./**/*.blg ./**/*.log ./**/*toc ./**/*.ptb ./**/*.tod ./**/*.fls ./**/*.fdb_latexmk ./**/*.lof ./**/*.vrb ./**/*.nav ./**/*.snm ./**/*.bcf ./**/*.bak
 
 clean-pdf: 
 	rm -f *.pdf
@@ -29,12 +37,7 @@ spellcheck:
 
 compile:
 	xelatex $(FILE)
-	bibtex $(FILE)
+	biber $(FILE)
 	xelatex $(FILE)
 	xelatex $(FILE)
 	make clean-tex
-
-all: 
-	$(MAKE) -j8 deps
-	$(MAKE) spellcheck 
-	$(MAKE) -j8 compile

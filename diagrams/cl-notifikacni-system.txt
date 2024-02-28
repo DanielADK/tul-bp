@@ -1,5 +1,5 @@
 @startuml
-package "Stávající systém" {
+package "Stávající systém" <<Frame>> {
     abstract class User {
         -userId: int
         -name: string
@@ -40,7 +40,7 @@ enum NotificationImportance {
 }
 
 'Singleton Pattern pro NotificationManager
-class NotificationManager {
+class NotificationManager <<Singleton>> {
     -static instance: NotificationManager
     -notifiers: List<NotifierInterface>
     

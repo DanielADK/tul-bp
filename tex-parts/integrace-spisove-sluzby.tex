@@ -7,27 +7,26 @@ Avšak s přibývajícími zkušenostmi a dalším zkoumáním administrativníc
 Pro přiblížení je zde příklad procesu vyřízení pochvaly třídního učitele nezletilého žáka.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth/2]{ac-priklad-pochvala-tridniho-ucitele.png}
+    \includegraphics[width=\textwidth-60pt]{ac-priklad-pochvala-tridniho-ucitele.png}
     \caption{Příklad procesu vydání pochvaly třidního učitele}
     \label{fig:priklad-pochvala-tridniho-ucitele}
 \end{figure}
 
-Tento příklad je jeden z celé škály. Zde uváním všechny dokumenty z kategorie výchovných opatřední, které musí spravovat řadový třídní učitel:
-\begin{itemize}
-    \item zkouška pro doplnění klasifikace - oznámení;
-    \item pochvala třídního učitele;
-    \item důtka třídního učitele;
-    \item napomenutí třídního učitele;
-    \item upozornění na velkou absenci a na možnost vyžadování omlouvání absence pouze 
-    lékařem nebo jiným úředním způsobem;
-    \item omlouvání avsence pouze lékařem nebo jiným úředním způsobem;
-    \item upozornění na zaostávání;
-    \item upozornění na neúčast na cvičeních a neodevzdávání zpráv ze cvičení;
-\end{itemize}
+Tento příklad je jeden z celé škály. Školský zákon\cite{skolsky-zakon-kazenska-opatreni} definuje výchových opatření žáka na:
+\begin{enumerate}
+    \item podmíněné vyloučení žáka nebo studenta ze školy nebo školského zařízení;
+    \item vyloučení žáka nebo studenta ze školy nebo školského zařízení.
+\end{enumerate}
 
-Některé z těchto dokumentů mají další specifické podverze. Další typy a kategorie dokumentů jsou pro například pro ředitele školy. V uvedené kategorii celou manipulaci vyřizuje jeho zástupce pro třídu - tedy třídní učitel.
+Další kázeňská opatřední nemají právní důsledky pro žáka nebo studenta. Ta jsou v kompetenci ředitele školy nebo školského zařízení nebo třídního učitele. Zákon dále nedefinuje další opatřední a jejich předné definice a převádí tyto pravomoce na ministerstvo, tj. Ministerstvo školství, mládeže a tělovýchovy (MŠMT). Na základě vyhlášky\cite{vyhlaska-vychovna-opatreni} může škola při porušení stanovených školním řádem udělit podle závažnosti tato výchovná opatření:
+\begin{enumerate}
+    \item[a.] napomenutí třídního učitele;
+    \item[b.] důtku třídního učitele;
+    \item[c.] důtku ředitele školy.
+\end{enumerate}
+Pravidla pro udělování pochval a jiných ocenění a ukládání napomenutí jsou součástí školního řádu.
 
-V současné době se jednací čísla generují manuálně prostřednictvím administrativního pracovníka, což je proces, který je časově i personálně náročný a náchylný k lidským chybám. Tento tradiční přístup zahrnuje několik kroků, od žádosti o číslo, přes jeho zápis do fyzických nebo digitálních dokumentů, až po archivaci. Výsledkem je, že celý proces vyřízení jednoduchých úkonů, jako je vydání pochvaly třídního učitele, trvá déle, než je žádoucí, a to hlavně kvůli administrativní zátěži, která s tím souvisí.
+Jednací čísla se získávají manuálně administrativním pracovníkem z webového rozhraní spisové služby. Tento proces časov je náročný a náchylný k lidským chybám. Zahrnuje několik kroků od žádosti o číslo, přes jeho zápis do fyzických nebo digitálních dokumentů, až po archivaci. Výsledkem je, že celý proces vyřízení jednoduchých úkonů, jako je vydání pochvaly třídního učitele trvá déle, než je žádoucí a to hlavně kvůli administrativní zátěži, která s tím souvisí.
 
 Existuje možnost plné integrace spisové služby do ŠIS, což by výrazně zjednodušilo a urychlilo proces generování jednacích čísel a správu dokumentů. Pro úspěšnou integraci je však nezbytné, aby systém splňoval požadavky Národního standardu pro elektronické systémy spisové služby (NSESSS)\cite{nsesss}, což je klíčový dokument, který stanovuje pravidla pro správu, ukládání, archivaci a ochranu elektronických dokumentů ve veřejné správě.
 
@@ -42,11 +41,11 @@ Příklad fungování systému s implementací NSESSS
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth-60pt]{ac-nsesss-pochvala.png}
-    \caption{Příklad procesu vydání pochvaly třidního učitele pomocí NSESSS. Modře jsou vyznačeny aktivity zpracovávané člověkem a zeleně softwarovou část.}
+    \caption{Příklad procesu vydání pochvaly třidního učitele pomocí NSESSS. Modře se značkou C jsou vyznačeny aktivity zpracovávané člověkem a zeleně se značkou S softwarovou část. Číslice u značky označuje postup.}
     \label{fig:ac-nsesss-pochvala}
 \end{figure}
 
-\section{Implementace vícestupňového formuláře}
+\section{Návrh vícestupňového formuláře}
 Druhou cestou je vytvoření vícestupňového formuláře, který představuje více praktické a flexibilní řešení. Tento systém je navržen tak, aby automaticky notifikoval příslušného zaměstnance v kanceláři a poskytl mu přehledné informace potřebné pro rychlé zpracování žádosti o spisové číslo. Tento přístup minimalizuje potřebu rozsáhlého studia NSESSS pro programátora a současně zlepšuje efektivitu zpracování vydávání dokumentů.
 
 Dle kontaktu s ředitelem školy jsem provedl analýzu uživatelských požadavků a na jeho základě jsem identifikoval dvě možná řešení pro implementaci tohoto vícestupňového formuláře, které jsou nyní předmětem zájmu. Tento proces je klíčový pro efektivní uživatelsky-centristický nárh systému (UCD).
