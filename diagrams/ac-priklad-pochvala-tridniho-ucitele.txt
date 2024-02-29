@@ -1,14 +1,25 @@
 @startuml
+@startuml
+skinparam ParticipantBackgroundColor #AAF
+skinparam ParticipantBorderColor #AAF
+skinparam ActorBackgroundColor #AAF
+skinparam ActorBorderColor #AAF
+skinparam ArrowColor #444
+!$HUMAN = "#ADD8E6"
+!$SOFTWARE = "#90EE90"
+
 start
 
-:Stažení šablony dokumentu;
-:Kompletace požadovaných údajů do šablony;
-:Tisk dokumentu ve dvou exeplářích;
-:Žádosti o přidělení spisového čísla v kanceláři školy;
-:Zapsání přiděleného spisového čísla do tištěného dokumentu;
-:Předání dvou kopií žákovi pro získání podpisu zákonného zástupce;
-:Kontrola vrácení podepsané kopie;
-:Archivace kopie do osobní složky žáka;
+$HUMAN: C1: Stažení šablony dokumentu;
+$HUMAN: C2: Kompletace požadovaných\n údajů z IS do šablony;
+$HUMAN: C3: Tisk dokumentu ve dvou\n exeplářích bez jednacího čísla;
+$HUMAN: C4: Žádost o přidělení jednacího\n čísla v kanceláři školy;
+$HUMAN: C5: Manuální přepis dat do IS spisové\n služby a získání jednacího čísla;
+$HUMAN: C5: Zapsání přiděleného jednacího\n čísla do tištěného dokumentu;
+$HUMAN: C6: Odevzdání dokumentu žákovi\n pro podpis zákonným zástupcem;
+$HUMAN: C7: Vrácení podepsaném kopie\n třídnímu učiteli;
+$HUMAN: C8: Předání kopie do kanceláře\n školy;
+$HUMAN: C9: Archivace kopie do osobní\n složky žáka;
 
 stop
 @enduml

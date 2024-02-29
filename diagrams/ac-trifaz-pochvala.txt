@@ -1,0 +1,23 @@
+@startuml
+skinparam ParticipantBackgroundColor #AAF
+skinparam ParticipantBorderColor #AAF
+skinparam ActorBackgroundColor #AAF
+skinparam ActorBorderColor #AAF
+skinparam ArrowColor #444
+!$HUMAN = "#ADD8E6"
+!$SOFTWARE = "#90EE90"
+
+start
+$HUMAN: C1: Třídní učitel navrhne\nkandidáty na hlasování;  
+$SOFTWARE: S2: IS uspořádá frontu\nkandidátů seřazenou dle tříd;
+$HUMAN: S3: Pedagogický sbor odhlasuje\na zapisovatel zadá hodnoty do IS;
+  note
+    3 možnosti volby:
+    PRO, PROTI,
+    ZDRŽEL/A SE
+  endnote
+$SOFTWARE: S4 Vyhodnotí dle převahy\na notifikuje zodpovědného\nzaměstnance;
+
+partition "**Proces získání jednacího čísla**" <<Frame>> {
+}
+@enduml

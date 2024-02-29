@@ -9,7 +9,7 @@ else (ne)
   :Dvoufázový proces;
 endif
 
-:Přidělení spisového. čísla;
+:Přidělení jednacího čísla;
 :Vydání dokumentu;
 
 stop

@@ -7,10 +7,11 @@ skinparam ArrowColor #444
 !$HUMAN = "#ADD8E6"
 !$SOFTWARE = "#90EE90"
 
-partition "**Proces získání spisového čísla**" {
-  $SOFTWARE: IS upozorní zodpovědného\nzaměstnance o nové žádosti;
-  $HUMAN: Zobrazí si žádost,\nručně překopíruje informace\nz IS do IS spisové služby;
-  $HUMAN: Získané číslo ze spisové\nslužby doplní do IS školy; 
-  $SOFTWARE: IS upozorní žadatele o vyhotovení;
+partition "**Proces získání jednacího čísla**" {
+  $SOFTWARE: S2: IS upozorní zodpovědného\nzaměstnance o nové žádosti;
+  $HUMAN: C3: Zobrazí si žádost,\nručně překopíruje informace\nz IS do IS spisové služby;
+  $HUMAN: C4: Získané číslo ze spisové\nslužby doplní do IS školy; 
+  $SOFTWARE: S5: IS upozorní žadatele o vyhotovení;
 }
+
 @enduml

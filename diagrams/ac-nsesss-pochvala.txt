@@ -9,22 +9,22 @@ skinparam ArrowColor #444
 
 start
 $HUMAN: C1: Žádost o generování dokumentu formulářem v IS;
-partition "**Proces získání spisového čísla**" {
+partition "**Proces získání jednacího čísla**" {
   note
   XML soubor musí
   splňovat standard 
   NSESSS
   end note
 
-  $SOFTWARE: S1: Vytvoření XML souboru pro spisovou\nslužbu a vyplnění potřebnými daty;
-  $SOFTWARE: S2: Odeslání XML souboru\na server spisové služby;
-  $SOFTWARE: S3: Čekání na přidělení spisového čísla\nod spisové služby;
-  $SOFTWARE: S4: Začlenění spisového čísla\ndo dokumentu pochvaly;
+  $SOFTWARE: S2: Vytvoření XML souboru pro spisovou\nslužbu a vyplnění potřebnými daty;
+  $SOFTWARE: S3: Odeslání XML souboru\na server spisové služby;
+  $SOFTWARE: S4: Čekání na přidělení jednacího čísla\nod spisové služby;
+  $SOFTWARE: S5: Začlenění jednacího čísla\ndo dokumentu pochvaly;
 }
-$HUMAN: C2: Tisk dokumentu pochvaly\ns přiděleným spisovým číslem;
-$HUMAN: C3: Podpis třídním učitelem\nna tištěném dokumentu;
-$HUMAN: C4: Odevzdání dokumentu žákovi\npro podpis zákonným zástupcem;
-$HUMAN: C5: Vrácení podepsaného dokumentu\ndo školy pro archivaci;
-$HUMAN: C6: Uložení dokumentu\ndo archivu školy;
+$HUMAN: C6: Tisk dokumentu ve dvou\nexeplářích s přiděleným jednacím číslem;
+$HUMAN: C7: Podpis třídním učitelem\nna tištěném dokumentu;
+$HUMAN: C8: Odevzdání dokumentu žákovi\npro podpis zákonným zástupcem;
+$HUMAN: C9: Vrácení podepsané kopie\n dannému zaměstnanci školy;
+$HUMAN: C10: Archivace kopie do osobní\n složky žáka;
 stop
 @enduml
