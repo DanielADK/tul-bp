@@ -1,0 +1,40 @@
+@startuml
+entity "Class" as C {
+  * classId : int
+  --
+  letter : string
+  prefix : string
+  date_from : Date
+  date_to : Date
+  roomId : int
+  employeeId : int
+}
+
+entity "SubClass" as SC {
+  * subClassId : int
+  --
+  classId : int
+  name : string
+}
+
+entity "Student" as S {
+  * studentId : int
+  --
+  username : string
+  name : string
+  surname : string
+}
+
+entity "StudentAssignment" as SA {
+  * assignmentId : int
+  --
+  studentId : int
+  classId : int
+  subClassId : int
+}
+
+C ||--o{ SC : contains
+C ||--o{ SA : contains
+SC ||--o{ SA : contains
+S ||--o{ SA : has
+@enduml

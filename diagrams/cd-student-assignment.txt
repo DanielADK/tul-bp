@@ -1,0 +1,36 @@
+@startuml
+class Class {
+  int classId
+  string letter
+  string prefix
+  Date date_from
+  Date date_to
+  int roomId
+  int employeeId
+}
+
+class SubClass {
+  int subClassId
+  int classId
+  string name
+}
+
+class Student {
+  int studentId
+  string username
+  string name
+  string surname
+}
+
+class StudentAssignment {
+  int assignmentId
+  int studentId
+  int classId
+  int subClassId
+}
+
+Class "1" -- "0..*" SubClass : contains
+Class "1" -- "0..*" StudentAssignment : contains
+SubClass "1" -- "0..*" StudentAssignment : contains
+Student "1" -- "0..*" StudentAssignment : has
+@enduml

@@ -1,0 +1,137 @@
+\documentclass[FM,BP]{tulthesis}
+
+\newcommand{\verze}{2.1}
+
+\usepackage{polyglossia}
+\setdefaultlanguage{czech}
+
+
+\usepackage{makeidx}
+\makeindex
+
+\usepackage{fontspec}
+\usepackage{xunicode}
+
+\usepackage{xltxtra}
+\usepackage{tabularx}
+
+\usepackage{tikz}
+\usepackage{bbding}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{lscape}
+\usepackage{nameref}
+\usepackage[format=plain,
+            labelfont=it,
+            textfont=it]{caption}
+\usepackage{amsmath}
+\graphicspath{ {./images}{./tex-tul-template} }
+
+% příkazy specifické pro tento dokument / specific commands for this document
+\newcommand{\argument}[1]{{\ttfamily\color{\tulcolor}#1}}
+\newcommand{\argumentindex}[1]{\argument{#1}\index{#1}}
+\newcommand{\prostredi}[1]{\argumentindex{#1}}
+\newcommand{\prikazneindex}[1]{\argument{\textbackslash #1}}
+\newcommand{\prikaz}[1]{\prikazneindex{#1}\index{#1@\textbackslash #1}}
+\newcommand{\ccheckmark}{{\color[HTML]{009901} \CheckmarkBold}}
+\newcommand{\ccrossmark}{{\color[HTML]{CB0000} \XSolid}}
+\newenvironment{myquote}{\begin{list}{}{\setlength\leftmargin\parindent}\item[]}{\end{list}}
+\newenvironment{listing}{\begin{myquote}\color{\tulcolor}}{\end{myquote}}
+\clubpenalty=10000
+\widowpenalty=10000
+\sloppy
+
+% deklarace pro titulní stránku / title page declaration
+\TULtitle{Řešení problematiky informačního systému střední školy}{}
+\TULauthor{Daniel Adámek}
+
+% pro bakalářské, diplomové a disertační práce / for bachelor, master theses and dissertation
+\TULprogramme{B0613A140005}{Informační technologie}{Information technology}
+\TULbranch{}{Aplikovaná informatika}{Applied Informatics}
+%\TULbranch{1802T008}{Nějaký jiný obor}{Some other branch}
+\TULsupervisor{Ing. Lenka Kosková Třísková Ph.D.}
+\TULyear{2024}
+
+% pro habilitační práce / habilitation thesis
+%\TULbranch{}{Technická kybernetika}{Technical cybernetics}
+%\TULyear{2022}
+
+% Použití bibLateXu, pracuje s ISO stylem
+% BibLaTeX settings, works with ISO style
+\usepackage[ 
+    backend=biber
+    % ,style=iso-authoryear % styl vyžaduje FZS TUL , místo příkazu \cite{} je potřeba využít \parencite{} (sazba kulatých závorek) / style required by FZS TUL use \parencite{} instead of \cite{}
+    ,style=iso-numeric
+    ,style=numeric
+    ,sortlocale=cs_CZ
+    ,autolang=other
+    ,bibencoding=UTF8
+    %,urldate=edtf
+    ,maxcitenames=2 %maximum v textu citovaných jmen
+    ,maxbibnames=3 %maximum v seznamu vyjmenovaných autorů
+    ]{biblatex}
+
+\addbibresource{refs.bib}% vložení seznamu literárních zdrojů v bib formátu / input of references in bib format
+
+% Úprava iso-numeric.bbx v souladu s požadavky TUL hranaté závorky v číslovaném seznamu / Modification of iso-numeric.bbx in accordance with TUL requirements of square brackets in a numbered list
+\DeclareFieldFormat{labelnumberwidth}{\mkbibbrackets{#1}}
+
+% Formátování podle pokynů FZS, při využití stylu iso-authoryear, čárka mezi jmény a poslední jméno se spojkou a / special requirements of FZS TUL 
+\DeclareDelimFormat{multinamedelim}{\addcomma\space}
+
+\DeclareDelimFormat{finalnamedelim}{%
+  \ifnumgreater{\value{liststop}}{2}{\finalandcomma}{}%
+  \addspace\bibstring{and}\space}
+
+\DeclareNameAlias{author}{family-given/given-family} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{csquotes} %užití biblatexu hlasí warnings, důvodem může být použití českých uvozovek v citacích! / solving of problems with Czech quotations
+\urlstyle{same} %sazba url odkazů stejným fontem jako ostatní text, řešení problémů v zalamování hypertextových odkazů v citacích / url in references setting into the same form as text 
+
+
+\begin{document}
+
+% Prohlášení
+\ThesisStart{male}
+%\ThesisStart{zadani-a-prohlaseni.pdf}
+
+% Abstrakt
+\include{tex-parts/abstract}
+
+% Volná stránka
+\clearpage
+
+% Poděkování
+\include{tex-parts/acknowledgement}
+
+% Obsah
+\phantomsection\addcontentsline{toc}{section}{Obsah}
+\tableofcontents
+\clearpage
+
+% Seznam zkratek
+\include{tex-parts/abbreviations}
+
+% ====================================================================== %
+
+% Udržitelnost
+\include{tex-parts/udrzitelnost}
+
+% Spisová služba
+\include{tex-parts/zakovske-skupiny-matematicky}
+\include{tex-parts/zakovske-skupiny-technicky}
+
+% Notifikační systém
+\include{tex-parts/notifikacni-system}
+
+% ====================================================================== %
+
+% Reference
+\chapter{Reference}
+\printbibliography[heading=none]
+
+% Přílohy
+\include{tex-parts/attachments}
+
+\end{document}
