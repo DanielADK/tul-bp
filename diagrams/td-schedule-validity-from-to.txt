@@ -1,0 +1,47 @@
+@startuml
+box "Rozvrhový server" #LightBlue
+actor "Žák" as Student
+participant "Třída" as Class
+participant "Přiřazení žáka do třídy" as StudentAssignment
+end box
+database "Administrativní server" as AdminServer
+
+note over Student: Zápis žáka do školy
+AdminServer -> Student : synchronizace žáka
+
+note over Student: První školní rok
+Student -> Class: přiřazení do třídy A1
+Class -> StudentAssignment: zaznamenání přiřazení žáka
+StudentAssignment -> AdminServer: uložení přiřazení
+
+note over AdminServer: Konec školního roku
+AdminServer -> Class: vytvoření nové třídy A2 pro nový školní rok
+AdminServer --> StudentAssignment: aktualizace přiřazení žáků do nové třídy
+
+note over Student: Druhý školní rok
+Student -> Class: přiřazení do třídy 2
+Class -> StudentAssignment: zaznamenání přiřazení žáka
+StudentAssignment -> AdminServer: uložení přiřazení
+
+note over AdminServer: Konec školního roku
+AdminServer -> Class: vytvoření nové třídy A3 pro nový školní rok
+AdminServer --> StudentAssignment: aktualizace přiřazení žáků do nové třídy
+
+note over Student: Třetí školní rok
+Student -> Class: přiřazení do třídy A3
+Class -> StudentAssignment: zaznamenání přiřazení žáka
+StudentAssignment -> AdminServer: uložení přiřazení
+
+note over AdminServer: Konec školního roku
+AdminServer -> Class: vytvoření nové třídy A4 pro nový školní rok
+AdminServer --> StudentAssignment: aktualizace přiřazení žáků do nové třídy
+
+note over Student: Čtvrtý školní rok
+Student -> Class: přiřazení do třídy A4
+Class -> StudentAssignment: zaznamenání přiřazení žáka
+StudentAssignment -> AdminServer: uložení přiřazení
+
+note over AdminServer: Historická data
+AdminServer -> AdminServer: uchovávání historických dat
+
+@enduml

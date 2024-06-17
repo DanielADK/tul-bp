@@ -1,0 +1,38 @@
+@startuml
+package "Školní Systém" {
+    entity "Třída" as Class {
+    }
+
+    entity "Žák" as Student {
+    }
+
+    entity "Aktuální rozvrh" as CurrentSchedule {
+    }
+
+    entity "Záznamy třídní knihy" as LessonRecord {
+    }
+
+    entity "Absence" as Absence {
+    }
+
+    Class ||--o{ Student : "obsahuje"
+    Class ||--right-o{ CurrentSchedule : "má aktuální rozvrh"
+    Class ||--down-o{ LessonRecord : "má třídní knihu"
+    Class ||--right-o{ Absence : "má absenci"
+
+    Student ||--left-o{ Absence : "má absenci"
+    Student ||--down-o{ LessonRecord : "je zapsán v třídní knize"
+}
+
+package "Administrativní Server" {
+    entity "Historická data" as HistoricalData {
+    }
+
+    HistoricalData -down-o Student : "uchovává histori\n studentů"
+    HistoricalData -down-o Class : "uchovává historii\ntříd"
+    HistoricalData -down-o CurrentSchedule : "uchovává \nhistorické \nrozvrhy"
+    HistoricalData -left-o LessonRecord : "uchovává historické\ntřídní knihy"
+    HistoricalData -down-o Absence : "uchovává\nhistorické\nabsence"
+}
+
+@enduml

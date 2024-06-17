@@ -1,0 +1,20 @@
+@startuml
+participant "Uživatel" as User
+participant "Třída" as Class
+participant "Školní rok" as SchoolYear
+
+note over Class: Třída je vytvořena
+Class -> Class: nastavení prefix, suffix, datumVytvoreni
+
+note over User: Dotaz na třídu
+User -> Class: dotaz na třídu
+Class -> SchoolYear: získání aktuálního školního roku
+SchoolYear --> Class: datumZačátkuŠkolníhoRoku
+
+note over Class: Dynamická kalkulace ročníku a složení názvu
+Class -> Class: výpočet ročníku\nGrade = (aktuálníDatum - datumVytvořeníTřídy)->rok+1
+Class -> Class: složení názvu třídy\nNázev = prefix + Grade + suffix
+
+Class --> User: vrácení dat třídy s vypočteným názvem
+
+@enduml

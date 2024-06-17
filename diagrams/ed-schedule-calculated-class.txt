@@ -1,0 +1,24 @@
+@startuml
+entity "Třída" as Class {
+    +prefix: String
+    +suffix: String
+    +datumVytvoreni: Date
+}
+
+entity "Žák" as Student {
+}
+
+entity "Třídní kniha" as LessonRecord {
+}
+
+entity "Absence" as Absence {
+}
+
+Class ||--o{ Student : "obsahuje"
+
+Student ||--o{ Absence : "má absenci"
+Student ||--o{ LessonRecord : "je zapsán v"
+
+LessonRecord ||-{ Absence : "má záznamy o absenci žáka"
+
+@enduml

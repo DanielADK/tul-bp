@@ -1,0 +1,20 @@
+@startuml
+entity "Žák" as Student {
+    +id: Integer
+    +jméno: String
+    +příjmení: String
+    +datumZaniku: Datetime
+}
+
+entity "Třída" as Class {
+    +prefix: String
+    +sufix: String
+    +datumVytvoření: Datetime
+}
+
+
+Student ||--o{ Student : "minulé účty"
+
+Class ||--o{ Student : "obsahuje"
+
+@enduml

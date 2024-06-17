@@ -1,0 +1,35 @@
+@startuml
+entity "Třída" as Class {
+    +název: String
+    +ročník: Integer
+    +validFrom: Date
+    +validTo: Date
+}
+
+entity "Žák" as Student {
+}
+
+entity "Záznamy třídní knihy" as LessonRecord {
+}
+
+entity "Absence" as Absence {
+}
+
+entity "Přiřazení žáka do třídy" as StudentAssignment {
+    +studentId: Integer
+    +classId: Integer
+    +validFrom: Date
+    +validTo: Date
+}
+
+Class ||-right-o{ StudentAssignment : "má přiřazení"
+Student ||-left-o{ StudentAssignment : "je přiřazen"
+
+Class ||--o{ LessonRecord : "má třídní knihu"
+Class ||--o{ Absence : "má absenci"
+
+Student ||--o{ Absence : "má absenci"
+
+LessonRecord ||-{ Absence : "má záznamy o absenci žáka"
+
+@enduml
