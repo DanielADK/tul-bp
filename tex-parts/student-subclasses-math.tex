@@ -1,18 +1,18 @@
 \chapter{Agenda žákovských skupin}
 
-Ve vzdělávacích systémech je běžnou praxí rozdělovat studenty do tříd a následně do menších skupin pro různé předměty a aktivity, neboť tento postup významně přispívá k efektivitě vzdělávacího procesu jak pro žáky, tak pro učitele. Dělba studentů do menších skupin umožňuje přizpůsobit výuku individuálním potřebám žáků, což zvyšuje jejich zapojení a porozumění látce. Příkladně v jazykových předmětech je nezbytné vést aktivní konzultace, které jsou v menších skupinách realizovatelné mnohem efektivněji. 
+Ve vzdělávacích systémech je běžnou praxí rozdělovat žáky do tříd a následně do menších skupin pro různé předměty a aktivity, neboť tento postup významně přispívá k efektivitě vzdělávacího procesu jak pro žáky, tak pro učitele. Dělba žáků do menších skupin umožňuje přizpůsobit výuku individuálním potřebám žáků, což zvyšuje jejich zapojení a porozumění látce. Příkladně v jazykových předmětech je nezbytné vést aktivní konzultace, které jsou v menších skupinách realizovatelné mnohem efektivněji. 
 
 Dalším důvodem pro dělení žáků je kapacitní omezení učeben, které by při výuce v rámci celého třídního kolektivu nebylo možné optimálně využít. Tato opatření vedou k vyšší kvalitě výuky a efektivnějšímu využití dostupných zdrojů.
 
 \section{Definice}
 
-\textbf{Class \( C \)}: třída je množina všech studentů a je označena jako \( C \). Formálně:
+\textbf{Class \( C \)}: třída je množina všech žáků a je označena jako \( C \). Formálně:
 
 \[
 C = \{ s_1, s_2, \ldots, s_n \}
 \]
 
-kde \( s_k \) je student a \( n \) je celkový počet studentů ve třídě.
+kde \( s_k \) je žák a \( n \) je celkový počet žáků ve třídě.
 
 \textbf{SubClass \( SC_{i/j} \)}: žákovská skupina (dále jen skupina) je podmnožina třídy \( C \), kde \( i \) je číslo skupiny a \( j \) je počet částí. Formálně:
 
@@ -22,7 +22,7 @@ SC_{i/j} \subset C \quad
 
 \section{Podmínky pro skupiny}
 
-Abychom zajistili, že žádný student není opomenut a že všechny skupiny jsou disjunktní, musí být splněny následující podmínky:
+Abychom zajistili, že žádný žák není opomenut a že všechny skupiny jsou disjunktní, musí být splněny následující podmínky:
 
 \subsection*{Úplnost}
 
@@ -34,7 +34,7 @@ Sjednocení všech \( j \) částí skupiny musí tvořit celou třídu \( C \):
 
 \subsection*{Disjunkce}
 
-Žádný student nesmí patřit do více než jedné části téže skupiny:
+Žádný žák nesmí patřit do více než jedné části téže skupiny:
 
 \[
 SC_{i/j} \cap SC_{k/j} = \emptyset \quad \text{pro} \quad i \neq k
@@ -42,11 +42,11 @@ SC_{i/j} \cap SC_{k/j} = \emptyset \quad \text{pro} \quad i \neq k
 
 \section{Kategorizace podmnožin}
 
-V rámci tříd můžeme studenty rozdělit do různých kategorií podmnožin podle různých kritérií. Níže uvádíme několik obecných kategorií podmnožin a příklad jejich využití.
+V rámci tříd můžeme žáky rozdělit do různých kategorií podmnožin podle různých kritérií. Níže uvádíme několik obecných kategorií podmnožin a příklad jejich využití.
 
 \subsection*{Dělení na zlomky}
 
-Jedním z nejběžnějších způsobů rozdělení třídy je dělení na zlomky. Tato metoda je často využívána pro různé aktivity a předměty, kde je potřeba pracovat s menšími skupinami studentů.
+Jedním z nejběžnějších způsobů rozdělení třídy je dělení na zlomky. Tato metoda je často využívána pro různé aktivity a předměty, kde je potřeba pracovat s menšími skupinami žáků.
 
 \setlength{\parindent}{0em}
 \setlength{\parskip}{1em}
@@ -68,11 +68,11 @@ a
 SC_{1/2} \cap SC_{2/2} = \emptyset
 \]
 
-Tento přístup je užitečný například při laboratorních cvičeních, kde je potřeba, aby každý student měl přístup k vybavení a učitel mohl efektivně dohlížet na práci studentů.
+Tento přístup je užitečný například při laboratorních cvičeních, kde je potřeba, aby každý žák měl přístup k vybavení a učitel mohl efektivně dohlížet na práci žáků.
 
 \subsection*{Dělení podle pohlaví}
 
-Další běžnou metodou rozdělení studentů je podle pohlaví. Toto rozdělení může být užitečné v situacích, kde je potřeba řešit specifické potřeby studentů podle pohlaví.
+Další běžnou metodou rozdělení žáků je podle pohlaví. Toto rozdělení může být užitečné v situacích, kde je potřeba řešit specifické potřeby žáků podle pohlaví.
 
 \begin{samepage}
 \setlength{\parindent}{0em}
@@ -108,18 +108,18 @@ Tento přístup může být užitečný při tělesné výchově nebo v předmě
 
 \subsection*{Úplnost}
 
-Podmínka úplnosti zajišťuje, že každý student ve třídě \( C \) je přiřazen do alespoň jedné skupiny. Pokud by některý student nebyl zahrnut v žádné skupině, nebyla by splněna podmínka:
+Podmínka úplnosti zajišťuje, že každý žák ve třídě \( C \) je přiřazen do alespoň jedné skupiny. Pokud by některý žák nebyl zahrnut v žádné skupině, nebyla by splněna podmínka:
 
 \[
 \bigcup_{i=1}^{j} SC_{i/j} \neq C
 \]
 
-To by znamenalo, že existuje alespoň jeden student \( s_k \), který nepatří do žádné části skupiny, což je nepřijatelné.
+To by znamenalo, že existuje alespoň jeden žák \( s_k \), který nepatří do žádné části skupiny, což je nepřijatelné.
 \pagebreak
 \begin{samepage}
 \subsection*{Disjunkce}
 
-Podmínka disjunkce zajišťuje, že žádný student není přiřazen do více než jedné části skupiny. Pokud by některý student patřil do více než jedné části skupiny, byla by narušena disjunkčnost:
+Podmínka disjunkce zajišťuje, že žádný žák není přiřazen do více než jedné části skupiny. Pokud by některý žák patřil do více než jedné části skupiny, byla by narušena disjunkčnost:
 \nopagebreak
 
 \[
@@ -127,14 +127,14 @@ SC_{i/j} \cap SC_{k/j} \neq \emptyset \quad \text{pro} \quad i \neq k
 \]
 \nopagebreak
 
-To by znamenalo, že existuje alespoň jeden student \( s_k \), který patří do více než jedné části skupiny, což je také nepřijatelné.
+To by znamenalo, že existuje alespoň jeden žák \( s_k \), který patří do více než jedné části skupiny, což je také nepřijatelné.
 \end{samepage}
 
 \section{Příklady}
 
 \subsection*{Třída a podskupiny}
 
-Předpokládejme, že máme třídu \( C \) se \( n \) studenty:
+Předpokládejme, že máme třídu \( C \) se \( n \) žáky:
 
 \[
 C = \{ s_1, s_2, \ldots, s_n \}
@@ -159,12 +159,12 @@ Tento výraz zajišťuje, že každá část skupiny je zahrnuta ve sjednocení,
 \[
 SC_{i/j} \cap SC_{k/j} = \emptyset \quad \text{pro} \quad i \neq k
 \]
-Tento výraz zajišťuje, že žádný student není zahrnut ve více než jedné části skupiny.
+Tento výraz zajišťuje, že žádný žák není zahrnut ve více než jedné části skupiny.
 
 \begin{samepage}
 \subsection*{Příklad pro tři části}
 
-Pro ilustraci uvažujme třídu \( C \) se šesti studenty:
+Pro ilustraci uvažujme třídu \( C \) se šesti žáky:
 \nopagebreak
 \[
 C = \{ s_1, s_2, s_3, s_4, s_5, s_6 \}
@@ -217,5 +217,5 @@ SC_{2/3} \cap SC_{3/3} = \emptyset
 
 \subsection*{Závěr}
 
-Matematická úvaha o třídách a skupinách zajišťuje, že rozdělení studentů do skupin je úplné a disjunktní. To znamená, že každý student je přiřazen do alespoň jedné skupiny a žádný student není přiřazen do více než jedné části skupiny. Tímto způsobem je zajištěno, že žádný student není opomenut a že všechny skupiny jsou disjunktní a kompletně pokrývají celou třídu.
+Matematická úvaha o třídách a skupinách zajišťuje, že rozdělení žáků do skupin je úplné a disjunktní. To znamená, že každý žák je přiřazen do alespoň jedné skupiny a žádný žák není přiřazen do více než jedné části skupiny. Tímto způsobem je zajištěno, že žádný žák není opomenut a že všechny skupiny jsou disjunktní a kompletně pokrývají celou třídu.
 

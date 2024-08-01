@@ -1,24 +1,24 @@
 @startuml
-entity "Třída" as Class {
+entity "Class" as Class {
     +prefix: String
     +suffix: String
-    +datumVytvoreni: Date
+    +creationDate: Datetime
 }
 
-entity "Žák" as Student {
+entity "Student" as Student {
 }
 
-entity "Třídní kniha" as LessonRecord {
+entity "Lesson Record" as LessonRecord {
 }
 
 entity "Absence" as Absence {
 }
 
-Class ||--o{ Student : "obsahuje"
+Class ||--o{ Student : "contains"
 
-Student ||--o{ Absence : "má absenci"
-Student ||--o{ LessonRecord : "je zapsán v"
+Student ||--o{ Absence : "has absence"
+Student ||--o{ LessonRecord : "is enrolled in"
 
-LessonRecord ||-{ Absence : "má záznamy o absenci žáka"
+LessonRecord ||-{ Absence : "contains records of student's absence"
 
 @enduml

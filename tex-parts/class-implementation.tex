@@ -17,9 +17,9 @@ Pro lepší pochopení problému je důležité nahlédnout do širších souvis
 V kontextu školního rozvrhového systému se agenda tříd týká správy informací o třídách, které zahrnují aktuální třídy, jejich žáky, rozvrhy, záznamy probrané látky (\ref{sec:lesson-evidence} třídnice) a absence. Systém musí být schopen všechny změny správně zaznamenat a reflektovat. Zmíněný úkol je komplikován několika faktory:
 
 \begin{enumerate}
-    \item \textbf{Horizontální přechody studentů:} Žák během studia v průběhu školního roku může změnit třídu, obor nebo třeba školu za speficických podmínek, který stanovuje školský zákon a ředitel školy.
-    \item \textbf{Vertikální přechody studentů:} Žák, který nesplní zákonné požadavky pro postup do dalšího ročníku, tedy neprospěl, může být zařazen v následujícím školním roce do jiné třídy a ročník opakovat. Žák též může vzdělávání přerušit, či školu opustit.
-    \item \textbf{Přerušení studia:} Student může během probíhajícího studia požádat ředitele školy o přerušení vzdělávání. Maximální doba trvání přerušení dle zákona § 66 odst. 5 zákona č. 561/2004 Sb. školský zákon - znění od 01.01.2024 \cite{skolsky-zakon-preruseni-obyc} až na dobu dvou let s výjimkou mateřství \cite{skolsky-zakon-preruseni-materstvi}, které se řídí jiným procesem.
+    \item \textbf{Horizontální přechody žáků:} Žák během studia v průběhu školního roku může změnit třídu, obor nebo třeba školu za speficických podmínek, který stanovuje školský zákon a ředitel školy.
+    \item \textbf{Vertikální přechody žáků:} Žák, který nesplní zákonné požadavky pro postup do dalšího ročníku, tedy neprospěl, může být zařazen v následujícím školním roce do jiné třídy a ročník opakovat. Žák též může vzdělávání přerušit, či školu opustit.
+    \item \textbf{Přerušení studia:} Žák může během probíhajícího studia požádat ředitele školy o přerušení vzdělávání. Maximální doba trvání přerušení dle zákona § 66 odst. 5 zákona č. 561/2004 Sb. školský zákon - znění od 01.01.2024 \cite{skolsky-zakon-preruseni-obyc} až na dobu dvou let s výjimkou mateřství \cite{skolsky-zakon-preruseni-materstvi}, které se řídí jiným procesem.
     \item \textbf{Administrativní a kontrolní požadavky:} Uchovávání dat pro administrativní, právní a legislativní důvody, kterým mohou být inspekce státními orgány nebo například soudy.
 \end{enumerate}
 
@@ -33,8 +33,8 @@ Na základě výše uvedených požadavků a kontextu jsou navrženy tři hlavn�
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=\textwidth]{ed-schedule-only-actual.png}
-        \caption{Ukládání pouze aktuálního ročníku a aktuálních rozvrhů}
+        \includegraphics[width=.8\textwidth]{ed-schedule-only-actual.png}
+        \caption{Diagram způsobu ukládání pouze aktuálního ročníku a aktuálních rozvrhů}
         \label{fig:ed-schedule-only-actual}
     \end{figure}
     
@@ -44,7 +44,7 @@ Na základě výše uvedených požadavků a kontextu jsou navrženy tři hlavn�
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.6\textwidth]{ed-schedule-calculated-class.png}
+        \includegraphics[width=0.7\textwidth]{ed-schedule-calculated-class.png}
         \caption{Relační schéma varianty s kalkulovaným ročníkem}
         \label{fig:ed-schedule-only-actual}
     \end{figure}
@@ -74,7 +74,9 @@ Na základě výše uvedených požadavků a kontextu jsou navrženy tři hlavn�
         \end{figure}
     \end{itemize}
 
-    \item \textbf{Třída definována celým názvem a datem validity od - do:} Tento přístup zahrnuje kompletní informace o třídě včetně ročníku a platnosti od-do. Každý rok se vytváří nové třídy a vztahy mezi studenty a třídami jsou zaznamenány pomocí M:N tabulky.
+    \newpage
+    \item \textbf{Třída definována celým názvem a datem validity od - do:}
+    \label{item:class-implementation-from-to-validity} Tento přístup zahrnuje kompletní informace o třídě včetně ročníku a platnosti od-do. Každý rok se vytváří nové třídy a vztahy mezi žáky a třídami jsou zaznamenány pomocí M:N tabulky.
 
     \begin{figure}[H]
         \centering
@@ -82,6 +84,10 @@ Na základě výše uvedených požadavků a kontextu jsou navrženy tři hlavn�
         \caption{Schéma vazby M:N pro přiřazení třídy v návrhu od - do}
         \label{fig:ed-schedule-validity-from-to}
     \end{figure}
+    
+    Hlavní výhodou tohoto řešení je konzistence dat i při přesunu žáků v třídách. V tom případě stačí ukončit validitu dotčených tříd, vytvořit nové se stejným názvem a přiřazení nových žáků ve správném pořadí.
+
+    Nevýhodou je vyšší náročnost dotazování na třídu konkrétního žáka. Databáze musí projít všechny přiřazené třídy žáka, vybrat tu aktuální dle dat rozsahu dat validity a následně třídu vybrat.
 
     \begin{figure}[H]
         \centering
@@ -89,10 +95,39 @@ Na základě výše uvedených požadavků a kontextu jsou navrženy tři hlavn�
         \caption{Schéma průchodu žáka školním procesem z podlehu rozvrhů v návrhu validity od - do}
         \label{fig:td-schedule-validity-from-to}
     \end{figure}
-    
-    Hlavní výhodou tohoto řešení je konzistence dat i při přesunu žáků v třídách. V tom případě stačí ukončit validitu dotčených tříd, vytvořit nové se stejným názvem a přiřazení nových žáků ve správném pořadí.
-
-    Nevýhodou je vyšší náročnost dotazování na třídu konkrétního žáka. Databáze musí projít všechny přiřazené třídy žáka, vybrat tu aktuálně validní dle dat validity a následně třídu vybrat.
-
 \end{enumerate}
+
+\section{Vyhodnocení vhodného řešení}
+\begin{landscape}
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|m{7cm}|m{7cm}|m{7cm}|}
+            \hline
+            \textbf{Přístup} & \textbf{Výhody (+)} & \textbf{Nevýhody (-)} \\ \hline
+            \textbf{Ukládání pouze aktuálního ročníku a aktuálních rozvrhů} & 1. Minimalizuje datovou zátěž na serveru \newline 2. Jednoduché dotazování na aktuální data & 1. Nutnost synchronizačního mechanismu \newline 2. Riziko ztráty dat při chybě programu \newline 3. Vyžaduje správu od různých zaměstnanců \\ \hline
+            \textbf{Třída definována prefixem, suffixem, datem vytvoření a kalkulovaným ročníkem} & 1. Snížení počtu záznamů v databázi \newline 2. Flexibilita v pojmenování tříd & 1. Komplexita kalkulace ročníků \newline 2. Potenciální nekonzistence dat \newline 3. Obtížná manipulace s propadlými nebo přecházejícími žáky \\ \hline
+            \textbf{Třída definována celým názvem a datem validity od - do} & 1. Konzistence dat při přesunech žáků \newline 2. Jednoduchá správa historických záznamů \newline 3. M:N vazby umožňují flexibilní přiřazení žáků & 1. Vyšší náročnost dotazování na aktuální třídu \newline 2. Zvýšená komplexita databázových dotazů \\ \hline
+        \end{tabular}
+        \caption{Porovnání přístupů}
+        \label{tab:class-implementation-comparison}
+    \end{table}
+\end{landscape}
+
+\begin{landscape}
+    \section{Vyhodnocení vhodného řešení}
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|m{7cm}|m{7cm}|m{7cm}|}
+            \hline
+            \textbf{Přístup} & \textbf{Výhody (+)} & \textbf{Nevýhody (-)} \\ \hline
+            \textbf{Ukládání pouze aktuálního ročníku a aktuálních rozvrhů} & 1. Minimalizuje datovou zátěž na serveru \newline 2. Jednoduché dotazování na aktuální data & 1. Nutnost synchronizačního mechanismu \newline 2. Riziko ztráty dat při chybě programu \newline 3. Vyžaduje správu od různých zaměstnanců \\ \hline
+            \textbf{Třída definována prefixem, suffixem, datem vytvoření a kalkulovaným ročníkem} & 1. Snížení počtu záznamů v databázi \newline 2. Flexibilita v pojmenování tříd & 1. Komplexita kalkulace ročníků \newline 2. Potenciální nekonzistence dat \newline 3. Obtížná manipulace s propadlými nebo přecházejícími žáky \\ \hline
+            \textbf{Třída definována celým názvem a datem validity od - do} & 1. Konzistence dat při přesunech žáků \newline 2. Jednoduchá správa historických záznamů \newline 3. M:N vazby umožňují flexibilní přiřazení žáků & 1. Vyšší náročnost dotazování na aktuální třídu \newline 2. Zvýšená komplexita databázových dotazů \\ \hline
+        \end{tabular}
+        \caption{Porovnání přístupů}
+        \label{tab:class-implementation-comparison}
+    \end{table}
+\end{landscape}
+
+Na základě porovnání v tabulce \ref{tab:class-implementation-comparison} je nejlepší variantou: \ref{item:class-implementation-from-to-validity}. \textbf{Třída definována celým názvem a datem validity od - do}. Tento přístup má více výhod (+) než nevýhod (-), a hlavní výhodou je jednoduchá správa historických záznamů a flexibilní vazba přiřazení žáků ke třídám a skupinám.
 

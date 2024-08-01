@@ -1,11 +1,10 @@
 @startuml
 entity "Class" as C {
-  * classId : int
-  --
+  classId : int
   letter : string
   prefix : string
-  date_from : Date
-  date_to : Date
+  validFrom : Datetime
+  validTo : Datetime
   roomId : int
   employeeId : int
 }

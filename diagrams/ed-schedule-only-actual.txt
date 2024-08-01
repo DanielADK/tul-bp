@@ -1,38 +1,38 @@
 @startuml
-package "Školní Systém" {
-    entity "Třída" as Class {
+package "School System" {
+    entity "Class" as Class {
     }
 
-    entity "Žák" as Student {
+    entity "Student" as Student {
     }
 
-    entity "Aktuální rozvrh" as CurrentSchedule {
+    entity "Current Schedule" as CurrentSchedule {
     }
 
-    entity "Záznamy třídní knihy" as LessonRecord {
+    entity "Lesson Record" as LessonRecord {
     }
 
     entity "Absence" as Absence {
     }
 
-    Class ||--o{ Student : "obsahuje"
-    Class ||--right-o{ CurrentSchedule : "má aktuální rozvrh"
-    Class ||--down-o{ LessonRecord : "má třídní knihu"
-    Class ||--right-o{ Absence : "má absenci"
+    Class ||--o{ Student : "contains"
+    Class ||--right-o{ CurrentSchedule : "has current schedule"
+    Class ||--down-o{ LessonRecord : "has lesson record"
+    Class ||--right-o{ Absence : "has absence"
 
-    Student ||--left-o{ Absence : "má absenci"
-    Student ||--down-o{ LessonRecord : "je zapsán v třídní knize"
+    Student ||--left-o{ Absence : "has absence"
+    Student ||--down-o{ LessonRecord : "is recorded in lesson record"
 }
 
-package "Administrativní Server" {
-    entity "Historická data" as HistoricalData {
+package "Administrative Server" {
+    entity "Historical Data" as HistoricalData {
     }
 
-    HistoricalData -down-o Student : "uchovává histori\n studentů"
-    HistoricalData -down-o Class : "uchovává historii\ntříd"
-    HistoricalData -down-o CurrentSchedule : "uchovává \nhistorické \nrozvrhy"
-    HistoricalData -left-o LessonRecord : "uchovává historické\ntřídní knihy"
-    HistoricalData -down-o Absence : "uchovává\nhistorické\nabsence"
+    HistoricalData -down-o Student : "stores history\nof students"
+    HistoricalData -down-o Class : "stores history\nof classes"
+    HistoricalData -down-o CurrentSchedule : "stores \nhistorical \nschedules"
+    HistoricalData -left-o LessonRecord : "stores historical\nlesson records"
+    HistoricalData -down-o Absence : "stores\nhistorical\nabsences"
 }
 
 @enduml

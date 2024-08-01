@@ -1,36 +1,36 @@
 @startuml
-class Class {
-  int classId
-  string letter
-  string prefix
-  Date date_from
-  Date date_to
-  int roomId
-  int employeeId
+entity "Class" as Class {
+    +classId: int
+    +letter: string
+    +prefix: string
+    +validFrom: Datetime
+    +validTo: Datetime
+    +roomId: int
+    +employeeId: int
 }
 
-class SubClass {
-  int subClassId
-  int classId
-  string name
+entity "SubClass" as SubClass {
+    +subClassId: int
+    +classId: int
+    +name: string
 }
 
-class Student {
-  int studentId
-  string username
-  string name
-  string surname
+entity "Student" as Student {
+    +studentId: int
+    +username: string
+    +name: string
+    +surname: string
 }
 
-class StudentAssignment {
-  int assignmentId
-  int studentId
-  int classId
-  int subClassId
+entity "Student Assignment" as StudentAssignment {
+    +studentId: int
+    +classId: int
+    +subClassId: int
 }
 
-Class "1" -- "0..*" SubClass : contains
-Class "1" -- "0..*" StudentAssignment : contains
-SubClass "1" -- "0..*" StudentAssignment : contains
-Student "1" -- "0..*" StudentAssignment : has
+Class ||--o{ SubClass : "contains"
+Class ||-left-o{ StudentAssignment : "contains"
+SubClass ||--o{ StudentAssignment : "contains"
+Student ||-right-o{ StudentAssignment : "has"
+
 @enduml
