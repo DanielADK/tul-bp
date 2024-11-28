@@ -1,0 +1,14 @@
+@startuml
+start
+:Ověřit existenci žáka;
+:Ověřit existenci třídy;
+if (Žák přiřazen k třídě?) then (ano)
+  :Ukončit aktuální přiřazení třídy;
+  :Ukončit aktuální přiřazení podskupiny;
+  :Přiřadit žáka do nové třídy;
+  :Aktualizovat databázi;
+else (ne)
+  :Zobrazit chybovou zprávu;
+endif
+stop
+@enduml

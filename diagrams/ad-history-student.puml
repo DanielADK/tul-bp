@@ -1,0 +1,12 @@
+@startuml
+start
+:Ověřit existenci žáka;
+if (Žák existuje?) then (ano)
+  :Načíst historii přiřazení třídy;
+  :Načíst historii přiřazení podskupiny;
+  :Zobrazit historii;
+else (ne)
+  :Zobrazit chybovou zprávu;
+endif
+stop
+@enduml

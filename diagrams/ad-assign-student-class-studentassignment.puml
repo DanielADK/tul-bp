@@ -1,0 +1,12 @@
+@startuml
+start
+:Ověřit existenci žáka;
+:Ověřit existenci třídy;
+if (Třída existuje?) then (ano)
+  :Přiřadit žáka do třídy;
+  :Aktualizovat databázi;
+else (ne)
+  :Zobrazit chybovou zprávu;
+endif
+stop
+@enduml

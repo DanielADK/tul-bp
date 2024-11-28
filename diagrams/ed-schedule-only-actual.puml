@@ -1,5 +1,5 @@
 @startuml
-package "School System" {
+package "School system" {
     entity "Class" as Class {
     }
 
@@ -24,15 +24,13 @@ package "School System" {
     Student ||--down-o{ LessonRecord : "is recorded in lesson record"
 }
 
-package "Administrative Server" {
-    entity "Historical Data" as HistoricalData {
-    }
-
-    HistoricalData -down-o Student : "stores history\nof students"
-    HistoricalData -down-o Class : "stores history\nof classes"
-    HistoricalData -down-o CurrentSchedule : "stores \nhistorical \nschedules"
-    HistoricalData -left-o LessonRecord : "stores historical\nlesson records"
-    HistoricalData -down-o Absence : "stores\nhistorical\nabsences"
+package "Dedicated server" as DedicatedServer {
 }
+
+DedicatedServer -down-o Student : "stores history\nof students"
+DedicatedServer -down-o Class : "stores history\nof classes"
+DedicatedServer -down-o CurrentSchedule : "stores \nhistorical \nschedules"
+DedicatedServer -left-o LessonRecord : "stores historical\nlesson records"
+DedicatedServer -down-o Absence : "stores\nhistorical\nabsences"
 
 @enduml

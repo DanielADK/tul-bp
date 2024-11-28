@@ -1,0 +1,24 @@
+@startuml
+left to right direction
+!define RECTANGLE rectangle
+!define ACTOR actor
+
+ACTOR "Ředitel školy" as Principal
+
+RECTANGLE "Správa přiřazení žáka do tříd" {
+    usecase "Ukončit přiřazení žáka" as EndStudentAssignment
+    usecase "Přesunout žáka do jiné \nskupiny v rámci třídy" as MoveStudentToAnotherSubClass
+    usecase "Přesunout žáka do jiné třídy" as MoveStudentToAnotherClass
+    usecase "Přiřadit žáka do skupiny" as AssignStudentToSubClass
+    usecase "Přiřadit žáka do třídy" as AssignStudentToClass
+    usecase "Zobrazit historii \npřiřazení žáka" as ViewStudentAssignmentHistory
+}
+
+left to right direction
+Principal --> AssignStudentToClass
+Principal --> MoveStudentToAnotherClass
+Principal --> MoveStudentToAnotherSubClass
+Principal --> AssignStudentToSubClass
+Principal --> EndStudentAssignment
+Principal --> ViewStudentAssignmentHistory
+@enduml
