@@ -3,8 +3,8 @@ DIAGRAMS_DIR := ./diagrams
 IMG_DIR := ./images
 PARTS_DIR := ./tex-parts
 PLANTUML_JAR := ./vendor/plantuml.jar
-SOURCES := $(wildcard $(DIAGRAMS_DIR)/*.txt)
-TARGETS := $(patsubst $(DIAGRAMS_DIR)/%.txt,$(IMG_DIR)/%.png,$(SOURCES))
+SOURCES := $(wildcard $(DIAGRAMS_DIR)/*.puml)
+TARGETS := $(patsubst $(DIAGRAMS_DIR)/%.puml,$(IMG_DIR)/%.png,$(SOURCES))
 TEX_PARTS := $(wildcard $(PARTS_DIR)/*.tex)
 
 all: 
@@ -14,7 +14,7 @@ all:
 
 deps: $(TARGETS)
 	
-$(IMG_DIR)/%.png: $(DIAGRAMS_DIR)/%.txt
+$(IMG_DIR)/%.png: $(DIAGRAMS_DIR)/%.puml
 	@mkdir -p $(IMG_DIR)
 	java -jar $(PLANTUML_JAR) -o ../$(IMG_DIR) $<
 
@@ -31,9 +31,13 @@ clean-diagrams:
 	rm -f $(TARGETS)
 
 spellcheck:
-	for f in $(shell ls ${PARTS_DIR}); do aspell --lang=cs,en --home-dir=. --personal=./dictionary.txt --encoding=utf-8 -t -c $(PARTS_DIR)/$${f}; done || true;
+	for texfile in $(TEX_PARTS); do \
+		aspell --lang=cs,en --home-dir=. --personal=./dictionary.txt --encoding=utf-8 -t -c $$texfile || true; \
+		python3 typo-correct.py $$texfile; \
+	done
 
 	aspell --lang=cs --home-dir=. --personal=./dictionary.txt --encoding=utf-8 -t -c $(FILE).tex || true; \
+	python3 typo-correct.py $(FILE).tex
 
 compile:
 	xelatex $(FILE)
