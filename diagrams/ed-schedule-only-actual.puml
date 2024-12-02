@@ -1,4 +1,4 @@
-@startuml
+@startuml ed-schedule-only-actual
 package "School system" {
     entity "Class" as Class {
     }

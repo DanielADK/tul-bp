@@ -1,4 +1,4 @@
-@startuml ed-schedule-validity-from-to
+@startuml ed-schedule-calculated-study-entity
 entity "Student" as Student {
     + student_id: int
 }
@@ -7,9 +7,7 @@ entity "Study" as Study {
     + study_id: int
     + student_id: int
     + class_id: int
-
-    + valid_from: date
-    + valid_to: date
+    + schoolyear_id: int
 }
 
 entity "Class" as Class {
@@ -19,6 +17,12 @@ entity "Class" as Class {
     + creation_date: date
 }
 
+entity "SchoolYear" as SchoolYear {
+    + schoolyear_id: int
+    + name: string
+}
+
 Student ||-left-o{ Study : "has"
 Class ||-o{ Study : "belongs to"
+Study }o-up-|| SchoolYear : "is in"
 @enduml

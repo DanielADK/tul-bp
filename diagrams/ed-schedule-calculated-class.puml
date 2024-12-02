@@ -1,14 +1,15 @@
-@startuml
+@startuml ed-schedule-calculated-class
 entity "Class" as Class {
-    +prefix: String
-    +suffix: String
-    +creationDate: Datetime
+    +prefix: string
+    +suffix: string
+    +creation_date: date
 }
 
 entity "Student" as Student {
+    class_id: int
 }
 
-entity "Lesson Record" as LessonRecord {
+entity "LessonRecord" as LessonRecord {
 }
 
 entity "Absence" as Absence {
@@ -17,7 +18,7 @@ entity "Absence" as Absence {
 Class ||--o{ Student : "contains"
 
 Student ||--o{ Absence : "has absence"
-Student ||--o{ LessonRecord : "is enrolled in"
+Student ||--o{ LessonRecord : "has lesson record"
 
 LessonRecord ||-{ Absence : "contains records of student's absence"
 

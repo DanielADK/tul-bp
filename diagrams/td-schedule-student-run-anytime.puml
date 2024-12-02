@@ -1,0 +1,28 @@
+@startuml
+hide footbox
+
+== Začátek školního roku ==
+
+participant "Žák" as Student
+participant "Studium" as Enrollment
+participant "Třída" as Class
+
+Student -> Enrollment : Zahájení studia
+Enrollment -> Class : Přiřazení do třídy
+
+activate Enrollment #Green
+Enrollment -> Enrollment : Studium probíhá
+
+Student <- Enrollment : Přerušení studia
+deactivate Enrollment
+
+... Doba přerušení ...
+
+Student -> Enrollment : Obnovení studia
+Enrollment -> Class : Přiřazení do třídy
+activate Enrollment #Green
+Enrollment -> Enrollment : Studium pokračuje
+== Konec školního roku ==
+
+== Začátek školního roku ==
+@enduml

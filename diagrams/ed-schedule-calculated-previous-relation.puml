@@ -1,15 +1,15 @@
-@startuml
+@startuml ed-schedule-calculated-previous-relation
 entity "Student" as Student {
     +id: int
     +name: string
     +surname: string
-    +validTo: Datetime
+    +valid_to: date
 }
 
 entity "Class" as Class {
-    +prefix: String
-    +sufix: String
-    +creationDate: Datetime
+    +prefix: string
+    +sufix: string
+    +creation_date: date
 }
 
 

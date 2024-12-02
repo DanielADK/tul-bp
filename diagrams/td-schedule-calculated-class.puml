@@ -1,19 +1,19 @@
-@startuml
+@startuml td-schedule-calculated-class
 participant "Uživatel" as User
 participant "Třída" as Class
 participant "Školní rok" as SchoolYear
 
 note over Class: Třída je vytvořena
-Class -> Class: nastavení prefix, suffix, datumVytvoreni
+Class -> Class: nastavení prefix, suffix, creationDate
 
 note over User: Dotaz na třídu
 User -> Class: dotaz na třídu
 Class -> SchoolYear: získání aktuálního školního roku
-SchoolYear --> Class: datumZačátkuŠkolníhoRoku
+SchoolYear --> Class: 02.09.2024
 
-note over Class: Dynamická kalkulace ročníku a složení názvu
-Class -> Class: výpočet ročníku\nGrade = (aktuálníDatum - datumVytvořeníTřídy)->rok+1
-Class -> Class: složení názvu třídy\nNázev = prefix + Grade + suffix
+note over Class: Dynamický výpočet ročníku a složení názvu
+Class -> Class: výpočet ročníku
+Class -> Class: složení názvu třídy\nnázev = prefix + ročník + suffix
 
 Class --> User: vrácení dat třídy s vypočteným názvem
 
